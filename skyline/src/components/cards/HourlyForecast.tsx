@@ -27,7 +27,7 @@ export default function HourlyForecast({ }: Props) {
     return (
         <Card 
         title="24-Stunden Vorhersage"
-        childrenClassName="flex gap-6 overflow-x-scroll">
+        childrenClassName="flex gap-6 overflow-x-scroll overflow-hidden no-scrollbar pb-1">
             {data.forecast.forecastday[0].hour.map(hour => (
                 <div key={hour.time} className="flex flex-col gap-4 p-2 items-center">
                     <p>{formatHour(hour.time)}</p>
