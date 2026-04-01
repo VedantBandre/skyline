@@ -37,8 +37,8 @@ export default function DailyForecast({ }: Props) {
                     alt="Weather Icon"
                     /> */}
                     <p className="items-center">{Math.round(day.day.avgtemp_c)} °C</p>
-                    <p className="text-gray-500/75 items-center">{Math.round(day.day.mintemp_c)} °C</p>
-                    <p className="text-gray-500/75 items-center">{Math.round(day.day.maxtemp_c)} °C</p>
+                    <p className="text-gray-300/75 items-center">{Math.round(day.day.mintemp_c)} °C</p>
+                    <p className="text-gray-300/75 items-center">{Math.round(day.day.maxtemp_c)} °C</p>
                 </div>
             ))}
         </Card>
