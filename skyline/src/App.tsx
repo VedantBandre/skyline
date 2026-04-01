@@ -1,19 +1,24 @@
-import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { getWeather } from "./api";
 import DailyForecast from "./components/cards/DailyForecast";
-import Card from "./components/cards/Card";
+import HourlyForecast from "./components/cards/HourlyForecast";
+import CurrentWeather from "./components/cards/CurrentWeather";
 
 function App() {
   const { data } = useQuery({
     queryKey: ["weather"],
-    queryFn: () => getWeather({ lat: 51.508, lon: -0.121 }),
+    queryFn: () => getWeather({ lat: 49.2333, lon: 7.0, days:7 }),
   });
 
   return (
-    <div className="flex flex-col gap-8">
-      <Card title="Current Weather">
-        {JSON.stringify(data?.current)}
-      </Card>
+    <div className="flex flex-col gap-2">
+      <div>
+        <h1 className="flex flex-col items-center justify-center p-4 py-5 rounded-xl bg-zinc-900 shadow-md gap-4 text-5xl">
+          Skyline
+        </h1>
+      </div>
+      <CurrentWeather />
+      <HourlyForecast />
       <DailyForecast />
     </div>
   )
