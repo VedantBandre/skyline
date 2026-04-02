@@ -2,8 +2,11 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { getWeather } from "../../api";
 import Card from "./Card";
 import WeatherIcon from "../WeatherIcon";
+import type { Coords } from "../../types";
 
-type Props = {}
+type Props = {
+    coords : Coords
+}
 
 const formatHour = (hourStr: string) => {
     const date = new Date(hourStr.replace(/-/g,'\/'));
@@ -17,11 +20,11 @@ const formatHour = (hourStr: string) => {
     return date.toLocaleTimeString("de-DE", options);
 };
 
-export default function HourlyForecast({ }: Props) {
+export default function HourlyForecast({ coords }: Props) {
 
     const { data } = useSuspenseQuery({
-    queryKey: ["weather"],
-    queryFn: () => getWeather({ lat: 49.2333, lon: 7.0, days:7 }),
+    queryKey: ["weather", coords],
+    queryFn: () => getWeather({ lat: coords.lat, lon: coords.lon }),
     });
 
     return (

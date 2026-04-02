@@ -2,8 +2,10 @@ import Card from "./Card";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { getWeather } from "../../api";
 import WeatherIcon from "../WeatherIcon";
+import type { Coords } from "../../types";
 
 type Props = {
+    coords : Coords
 }
 
 const formatDate = (dateStr: string) => {
@@ -17,15 +19,15 @@ const formatDate = (dateStr: string) => {
     return date.toLocaleString("de-DE", options);
 };
 
-export default function DailyForecast({ }: Props) {
+export default function DailyForecast({ coords }: Props) {
     
     const { data } = useSuspenseQuery({
-    queryKey: ["weather"],
-    queryFn: () => getWeather({ lat: 49.2333, lon: 7.0, days:7 }),
+    queryKey: ["weather", coords],
+    queryFn: () => getWeather({ lat: coords.lat, lon: coords.lon }),
     });
 
     return (
-        <Card title="Tägliche Vorhersage" childrenClassName="flex flex-col gap-4">
+        <Card title="Tägliche Vorhersage" childrenClassName="flex flex-col">
             {data.forecast.forecastday.map(day => (
                 <div key={day.date} className="flex justify-between items-center">
                     {/* <p>{day.date}</p> */}
