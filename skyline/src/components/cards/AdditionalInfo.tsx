@@ -6,8 +6,11 @@ import Bewölkung from "/src/assets/sunrise.svg?react";
 import UV from "/src/assets/uv.svg?react";
 import Windrichtung from "/src/assets/wind.svg?react";
 import Luftdruck from "/src/assets/pressure.svg?react";
+import type { Coords } from "../../types";
 
-type Props = {}
+type Props = {
+    coords : Coords
+}
 
 const rows = [
     {
@@ -32,11 +35,11 @@ const rows = [
     },
 ] as const;
 
-export default function AdditionalInfo ({} : Props) {
+export default function AdditionalInfo ({ coords } : Props) {
 
     const { data } = useSuspenseQuery({
-    queryKey: ["weather"],
-    queryFn: () => getWeather({ lat: 49.2333, lon: 7.0, days:7 }),
+    queryKey: ["weather", coords],
+    queryFn: () => getWeather({ lat: coords.lat, lon: coords.lon }),
     });
 
     return (
