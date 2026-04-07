@@ -7,10 +7,16 @@ type Props = {
 }
 
 export function LocationDropdown ({ location, setLocation } : Props) {
+  // If the state is 'custom', we want to show 'Custom' (Capitalized)
+  // Otherwise, we show the city name
+  const displayValue = location === 'custom' ? 'Custom' : location;
+    
   return (
     <Select value={location} onValueChange={(value) => value && setLocation(value)}>
         <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Location" />
+            <SelectValue>
+                {displayValue}
+            </SelectValue>
         </SelectTrigger>
         <SelectContent className="z-1001">
             {locations.map((city) => (
