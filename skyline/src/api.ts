@@ -1,5 +1,3 @@
-// import { WeatherSchema } from "./schemas/WeatherSchema";
-
 import { weatherSchema } from "./schemas/weatherSchema";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
