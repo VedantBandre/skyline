@@ -10,6 +10,7 @@ import type { Coords } from "./types";
 import { LocationDropdown } from "./components/dropdowns/LocationDropdown";
 import { getGeoCode } from "./api";
 import { MapTypeDropdown } from "./components/dropdowns/MapTypeDropDown";
+import MapLegend from "./components/MapLegend";
 
 function App() {
   const [ coordinates, setCoords ] = useState<Coords>({ lat: 49.2333, lon: 7.0 })
@@ -41,12 +42,12 @@ function App() {
         </h1>
       </div> */}
       
-      <div className="flex gap-8 relative z-[1001]"> 
-        <div className="flex gap-4">
+      <div className="flex gap-8 relative z-[1001] pt-2"> 
+        <div className="flex gap-4 items-center mx-2">
           <h1 className="text-2x1 font-semibold">Ort</h1>
           <LocationDropdown location={location} setLocation={setLocation}/>
         </div>
-        <div className="flex gap-4">
+        <div className="flex gap-4 items-center">
           <h1 className="text-2x1 font-semibold">Kartentyp</h1>
           <MapTypeDropdown mapType={mapType} setMapType={setMapType}/>
         </div>
@@ -54,6 +55,7 @@ function App() {
       
       <div className="relative z-0">
         <Map coords={coords} onMapClick={onMapClick} mapType={mapType}/>
+        <MapLegend mapType={mapType}/>
       </div>
       
       <CurrentWeather coords={coords}/>

@@ -1,6 +1,10 @@
 import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import type { Coords } from '../types';
+import { useEffect } from 'react';
+import { MaptilerLayer } from '@maptiler/leaflet-maptilersdk';
+
+const VITE_MAPTILER_API_KEY = import.meta.env.VITE_MAPTILER_API_KEY;
 
 type Props = {
     coords : Coords
@@ -23,18 +27,20 @@ export default function Map ({ coords, onMapClick, mapType } : Props) {
             >
             <MapClick onMapClick={onMapClick} coords={coords}/>
             
-            {/* Base Map */}
+            {/* Base Map
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
+            /> */}
+            
+            <MapTileLayer />
             
             {/* Weather Overlay */}
             <TileLayer 
             key={`${mapType}-${timestamp}`}
             url={`https://weathermaps.weatherapi.com/${mapType}/tiles/${timestamp}/{z}/{x}/{y}.png`}
             opacity={0.45}
-            crossOrigin={true}
+            crossOrigin={false}
             />
             
             <Marker position={[lat, lon]} />
@@ -72,3 +78,23 @@ const getWeatherApiTimestamp = () => {
 
     return `${year}${month}${day}${hour}`;
 };
+
+
+// TODO: Reduce to using TileLayer
+function MapTileLayer() {
+    const map = useMap()
+
+    useEffect(() => {
+        const tileLayer = new MaptilerLayer({
+            style: "basic-dark", 
+            apiKey: VITE_MAPTILER_API_KEY, 
+        })
+        tileLayer.addTo(map)
+
+        return () => {
+            map.removeLayer(tileLayer)
+        }
+    }, [map])
+
+    return null
+}
