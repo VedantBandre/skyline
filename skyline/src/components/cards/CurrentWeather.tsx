@@ -38,12 +38,12 @@ export default function CurrentWeather ({ coords } : Props) {
             
             <div className="flex-1 flex flex-col items-center gap-2">
                 <p className="text-gray-300/75">Gefühlt wie</p>
-                <p>{data.current.feelslike_c} °C</p>
+                <p>{Math.round(data.current.feelslike_c)} °C</p>
             </div>
             
             <div className="flex-1 flex flex-col items-center gap-2">
                 <p className="text-gray-300/75">Wind</p>
-                <p>{data.current.wind_kph} kmph</p>
+                <p>{data.current.wind_kph} km/h</p>
             </div>
         </div>
         </Card>
