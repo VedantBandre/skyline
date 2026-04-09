@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { type ReactNode } from "react";
 
 type Props = {
@@ -26,7 +27,8 @@ export default function Card({ children, title, childrenClassName }: Props) {
         mx-1
         ">
             <h2 className="text-lg font-medium tracking-tight text-gray-900 dark:text-white/90">{title}</h2>
-            <div className={`text-gray-700 dark:text-gray-300 ${childrenClassName}`}>
+            {/* <div className={`text-gray-700 dark:text-gray-300 ${childrenClassName}`}> */}
+            <div className={clsx(childrenClassName, 'animate-[fade-in_0.6s_ease-out_forwards] text-gray-700 dark:text-gray-300')}>
                 {children}
             </div>
         </div>

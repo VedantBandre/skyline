@@ -21,35 +21,32 @@ export default function MapLegend({ mapType }: Props) {
     .map((stop, index) => {
       let percentage = ((stop.value - minValue) / range) * 100;
 
-      //   Prevent color bleeding at edges by forcing 1st and last stop to 0 and 100 %
-      if (index === 0)
-        percentage = 0;
-      
-      if (index === data.stops.length -1)
-        percentage = 100;
+      if (index === 0) percentage = 0;
+      if (index === data.stops.length - 1) percentage = 100;
 
-      return `${stop.color} ${percentage}%`;
-    })
-    .join(", ");
+      return `${stop.color} ${percentage}%, ${stop.color} ${percentage}%`;
+    }).join(", ");
 
   return (
-    <div className="absolute bottom-2 left-2 z-[1001] w-42 xs:w-64 rounded-sm shadow-lg p-2.5 bg-background/80 backdrop-blur-md border border-accent/70 flex flex-col gap-1.25">
+    <div className="absolute bottom-2 left-2 z-[1001] w-42 xs:w-64 rounded-sm shadow-lg p-2.5 bg-background/50 backdrop-blur-sm border border-accent/70 flex flex-col gap-1.25">
       <h3 className="text-xs font-semibold text-foreground">{data.title}</h3>
-      <div
-        className="w-full h-2.5 rounded-xs border border-accent/30"
-        style={{
-          background: `linear-gradient(to right, ${gradientStops})`,
-        }}
-      />
+      <div className="w-full h-2.5 rounded-xs border border-accent/30 overflow-hidden">
+        <div
+          className="h-full w-[calc(100%+6px)] -ml-[3px]"
+          style={{
+            background: `linear-gradient(90deg, ${gradientStops})`,
+          }}
+        />
+      </div>
       <div className="flex justify-between text-[9px] px-1 h-3 font-medium text-muted-foreground">
         <span>
-          {data.stops[0].value} {data.unit}
+          {data.stops[0].value}{data.unit}
         </span>
         <span>
-          {data.stops[Math.floor(data.stops.length / 2)].value} {data.unit}
+          {data.stops[Math.floor(data.stops.length / 2)].value}{data.unit}
         </span>
         <span>
-          {data.stops[data.stops.length - 1].value} {data.unit}
+          {data.stops[data.stops.length - 1].value}{data.unit}
         </span>
       </div>
     </div>
