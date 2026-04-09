@@ -40,22 +40,27 @@ function App() {
 
   return (
     <div className="dark flex flex-col gap-2">
-      {/* <div>
-        <h1 className="flex flex-col items-center justify-center p-2 rounded-xl bg-linear-to-br from-cyan-900/60 to-cyan-300/30 shadow-md gap-4 text-2xl">
+      {/* Skyline heading div */}
+      <div className="flex items-center justify-between px-2 py-1 mt-2 ml-1">
+        <h1 className="text-2xl font-medium tracking-tight text-gray-900 dark:text-white/90">
           Skyline
         </h1>
-      </div> */}
-      
-      <div className="dark flex gap-8 relative z-[1001] pt-2"> 
-        <div className="flex gap-4 items-center mx-2">
-          <h1 className="text-2xl font-semibold">Ort</h1>
-          <LocationDropdown location={location} setLocation={setLocation}/>
+        
+        {/* Location and map type dropdowns */}
+
+        <div className="flex gap-2 relative z-[1001] items-center justify-between pr-1">
+          <div className="flex items-center gap-4 mx-1.5">
+            {/* Location dropdown */}
+            <LocationDropdown location={location} setLocation={setLocation}/>
+          </div>
+          <div className="flex items-center gap-4">
+            {/* Map type dropdown */}
+            <MapTypeDropdown mapType={mapType} setMapType={setMapType}/>
+          </div>
         </div>
-        <div className="flex gap-4 items-center">
-          <h1 className="text-2xl font-semibold">Kartentyp</h1>
-          <MapTypeDropdown mapType={mapType} setMapType={setMapType}/>
-        </div>
+
       </div>
+
       
       <div className="relative z-0">
         <Map coords={coords} onMapClick={onMapClick} mapType={mapType}/>
