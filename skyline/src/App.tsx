@@ -16,6 +16,20 @@ import { HourlySkeleton } from "./components/skeletons/HourlySkeleton";
 import { DailySkeleton } from "./components/skeletons/DailySkeleton";
 import { AdditionalInfoSkeleton } from "./components/skeletons/AdditionalInfoSkeleton";
 
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
+
+L.Icon.Default.mergeOptions({
+  iconUrl: markerIcon,
+  iconRetinaUrl: markerIcon2x,
+  shadowUrl: markerShadow,
+});
+
+
 function App() {
   const [ coordinates, setCoords ] = useState<Coords>({ lat: 49.2333, lon: 7.0 })
   const [ location, setLocation ] = useState('Saarbrücken')
