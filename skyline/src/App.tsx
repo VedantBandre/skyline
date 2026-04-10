@@ -32,7 +32,7 @@ L.Icon.Default.mergeOptions({
 
 function App() {
   const [ coordinates, setCoords ] = useState<Coords>({ lat: 49.2333, lon: 7.0 })
-  const [ location, setLocation ] = useState('Berlin')
+  const [ location, setLocation ] = useState('Saarbrücken')
   const [ mapType, setMapType ] = useState('tmp2m')
 
   const { data } = useQuery({

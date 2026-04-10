@@ -38,6 +38,7 @@ const locations = [
     "Paris",
     "Rome",
     "Berlin",
+    "Saarbrücken",
     "Oslo",
     "Stockholm",
     "Copenhagen",
