@@ -12,13 +12,13 @@ export function MapTypeDropdown ({ mapType, setMapType } : Props) {
 
   return (
     <Select value={mapType} onValueChange={(value) => value && setMapType(value)}>
-        <SelectTrigger className="min-w-[200px]">
+        <SelectTrigger className="min-w-[180px]">
             <SelectValue placeholder="Kartentyp">
                 {currentLabel}
             </SelectValue>
         </SelectTrigger>
         
-        <SelectContent className="z-[1001]">
+        <SelectContent className="z-[1001] p-2">
             {weatherMapTypes.map((type) => (
                 <SelectItem key={type.value} value={type.value} className='capitalize'>
                     {type.label}

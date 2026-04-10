@@ -13,12 +13,12 @@ export function LocationDropdown ({ location, setLocation } : Props) {
     
   return (
     <Select value={location} onValueChange={(value) => value && setLocation(value)}>
-      <SelectTrigger className="min-w-[140px]">
+      <SelectTrigger className="min-w-[120px]">
             <SelectValue>
                 {displayValue}
             </SelectValue>
         </SelectTrigger>
-        <SelectContent className="z-1001">
+        <SelectContent className="z-1001 p-2 max-h-45 overflow-y-auto">
             {locations.map((city) => (
                 <SelectItem key={city} value={city}>
                     {city}
@@ -30,16 +30,30 @@ export function LocationDropdown ({ location, setLocation } : Props) {
 }
 
 const locations = [
-    "Bangkok",
-    "Tokyo",
-    "Seoul",
-    "Dubai",
-    "Manila",
-    "London",
     "New York",
-    "Paris",
-    "Berlin",
-    "Madrid",
-    "Rome",
+    "Reykjavik",
     "Lisbon",
-]
+    "London",
+    "Madrid",
+    "Paris",
+    "Rome",
+    "Berlin",
+    "Oslo",
+    "Stockholm",
+    "Copenhagen",
+    "Helsinki",
+    "Istanbul",
+    "Moscow",
+    "Dubai",
+    "Mumbai",
+    "Bangkok",
+    "Singapore",
+    "Hong Kong",
+    "Shanghai",
+    "Beijing",
+    "Manila",
+    "Seoul",
+    "Tokyo",
+    "Sydney",
+    "Melbourne",
+];

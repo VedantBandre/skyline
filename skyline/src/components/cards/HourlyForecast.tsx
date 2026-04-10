@@ -35,7 +35,7 @@ export default function HourlyForecast({ coords }: Props) {
                 <div key={hour.time} className="flex flex-col gap-4 p-2 items-center">
                     <p>{formatHour(hour.time)}</p>
                     <WeatherIcon src={hour.condition.icon}/>
-                    <p className="items-center">{Math.round(hour.temp_c)} °C</p>
+                    <p className="items-center">{Math.round(hour.temp_c)}<span className="inline-block w-1"></span>°C</p>
                     <p className="items-center capitalize">{hour.condition.text}</p>
                 </div>
             ))}
