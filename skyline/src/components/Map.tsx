@@ -3,18 +3,6 @@ import 'leaflet/dist/leaflet.css'
 import type { Coords } from '../types';
 import { useEffect } from 'react';
 import { MaptilerLayer } from '@maptiler/leaflet-maptilersdk';
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
-
-import markerIcon from "leaflet/dist/images/marker-icon.png";
-import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
-import markerShadow from "leaflet/dist/images/marker-shadow.png";
-
-L.Icon.Default.mergeOptions({
-  iconUrl: markerIcon,
-  iconRetinaUrl: markerIcon2x,
-  shadowUrl: markerShadow,
-});
 
 const VITE_MAPTILER_API_KEY = import.meta.env.VITE_MAPTILER_API_KEY;
 
