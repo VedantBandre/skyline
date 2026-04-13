@@ -61,10 +61,10 @@ const CurrentSchema = z.object({
   gust_mph: z.number(),
   gust_kph: z.number(),
 
-  short_rad: z.number(),
-  diff_rad: z.number(),
-  dni: z.number(),
-  gti: z.number(),
+  short_rad: z.number().optional(),
+  diff_rad: z.number().optional(),
+  dni: z.number().optional(),
+  gti: z.number().optional(),
 });
 
 const HourSchema = z.object({
@@ -116,10 +116,10 @@ const HourSchema = z.object({
 
   uv: z.number(),
 
-  short_rad: z.number(),
-  diff_rad: z.number(),
-  dni: z.number(),
-  gti: z.number(),
+  short_rad: z.number().optional(),
+  diff_rad: z.number().optional(),
+  dni: z.number().optional(),
+  gti: z.number().optional(),
 });
 
 const AstroSchema = z.object({
