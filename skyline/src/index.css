@@ -69,11 +69,11 @@
   --radius: 0.625rem;
 }
 
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
   :root {
     font-size: 16px;
   }
-}
+} */
 
 .dark {
   /* Shadcn Dark Theme (OKLCH) */

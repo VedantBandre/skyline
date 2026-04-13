@@ -30,13 +30,13 @@ export default function HourlyForecast({ coords }: Props) {
     return (
         <Card 
         title="24-Stunden Vorhersage"
-        childrenClassName="flex gap-6 overflow-x-scroll overflow-hidden no-scrollbar pb-1">
+        childrenClassName="flex gap-6 overflow-x-scroll overflow-hidden pb-1">
             {data.forecast.forecastday[0].hour.map(hour => (
-                <div key={hour.time} className="flex flex-col gap-4 p-2 items-center">
-                    <p>{formatHour(hour.time)}</p>
-                    <WeatherIcon src={hour.condition.icon}/>
-                    <p className="items-center">{Math.round(hour.temp_c)}<span className="inline-block w-1"></span>°C</p>
-                    <p className="items-center capitalize">{hour.condition.text}</p>
+                <div key={hour.time} className="flex flex-col gap-4 p-2 items-center 2xl:justify-between">
+                    <p className="2xl:scale-110">{formatHour(hour.time)}</p>
+                    <WeatherIcon className="2xl:size-16" src={hour.condition.icon}/>
+                    <p className="items-center 2xl:scale-110">{Math.round(hour.temp_c)}<span className="inline-block w-1"></span>°C</p>
+                    {/* <p className="items-center capitalize">{hour.condition.text}</p> */}
                 </div>
             ))}
         </Card>

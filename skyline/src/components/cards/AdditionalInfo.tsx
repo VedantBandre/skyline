@@ -45,7 +45,7 @@ export default function AdditionalInfo ({ coords } : Props) {
     return (
         <Card 
         title="Additional Info" 
-        childrenClassName="flex flex-col gap-5">
+        childrenClassName="grid grid-cols-1 md:grid-cols-2 gap-5">
             {rows.map(({ label, value, Icon }) => (
                 <div className="flex justify-between items-center-safe" key={value}>
                     

@@ -10,7 +10,7 @@ import type { Coords } from "./types";
 import { LocationDropdown } from "./components/dropdowns/LocationDropdown";
 import { getGeoCode } from "./api";
 import { MapTypeDropdown } from "./components/dropdowns/MapTypeDropDown";
-import MapLegend from "./components/MapLegend";
+// import MapLegend from "./components/MapLegend";
 import { CurrentSkeleton } from "./components/skeletons/CurrentSkeleton";
 import { HourlySkeleton } from "./components/skeletons/HourlySkeleton";
 import { DailySkeleton } from "./components/skeletons/DailySkeleton";
@@ -32,7 +32,7 @@ L.Icon.Default.mergeOptions({
 
 function App() {
   const [ coordinates, setCoords ] = useState<Coords>({ lat: 49.2333, lon: 7.0 })
-  const [ location, setLocation ] = useState('Saarbrücken')
+  const [ location, setLocation ] = useState("Saarbrücken")
   const [ mapType, setMapType ] = useState('tmp2m')
 
   const { data } = useQuery({
@@ -53,49 +53,58 @@ function App() {
     : coordinates;
 
   return (
-    <div className="dark flex flex-col gap-2">
-      {/* Skyline heading div */}
-      <div className="flex items-center justify-between px-2 py-1 mt-2 ml-1">
+    <div className="dark flex flex-col gap-2 p-2 w-full 2xl:h-screen">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between px-2 py-1 mt-2 ml-1 gap-2 md:gap-4">
+
+        {/* Skyline heading */}
         <h1 className="text-2xl font-medium tracking-tight text-gray-900 dark:text-white/90">
           Skyline
         </h1>
-        
-        {/* Location and map type dropdowns */}
 
-        <div className="flex gap-2 relative z-[1001] items-center justify-between pr-1">
-          <div className="flex items-center gap-4 mx-1.5">
-            {/* Location dropdown */}
-            <LocationDropdown location={location} setLocation={setLocation}/>
-          </div>
-          <div className="flex items-center gap-4">
-            {/* Map type dropdown */}
-            <MapTypeDropdown mapType={mapType} setMapType={setMapType}/>
-          </div>
+        {/* Dropdown GROUP */}
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 md:ml-auto items-stretch sm:items-center w-full sm:w-auto">
+          
+          {/* Location dropdown */}
+          <LocationDropdown location={location} setLocation={setLocation}/>
+          
+          {/* Map type dropdown */}
+          <MapTypeDropdown mapType={mapType} setMapType={setMapType}/>
+        
         </div>
 
       </div>
-
       
-      <div className="relative z-0">
-        <Map coords={coords} onMapClick={onMapClick} mapType={mapType}/>
-        <MapLegend mapType={mapType}/>
+
+      <div className="grid grid-cols-1 2xl:flex-1 2xl:min-h-0 md:grid-cols-2 2xl:grid-cols-4 2xl:grid-rows-4 gap-3">
+        <div className="relative h-120 2xl:h-auto z-0 col-span-1 md:col-span-2 md:row-span-2 2xl:col-span-4 2xl:row-span-2 order-1">
+          <Map coords={coords} onMapClick={onMapClick} mapType={mapType}/>
+          {/* <MapLegend mapType={mapType}/> */}
+        </div>
+        
+        <div className="col-span-1 2xl:row-span-2 order-2">
+          <Suspense fallback={<CurrentSkeleton/>}>
+            <CurrentWeather coords={coords}/>
+          </Suspense>
+        </div>
+
+        <div className="col-span-1 order-3 2xl:order-4 2xl:row-span-2">
+          <Suspense fallback={<DailySkeleton/>}>
+            <DailyForecast coords={coords}/>
+          </Suspense>
+        </div>
+        
+        <div className="col-span-1 md:col-span-2 2xl:row-span-1 order-4 2xl:order-3">
+          <Suspense fallback={<HourlySkeleton/>}>
+            <HourlyForecast coords={coords}/>
+          </Suspense>
+        </div>
+        
+        <div className="col-span-1 md:col-span-2 2xl:row-span-1 order-5">
+          <Suspense fallback={<AdditionalInfoSkeleton/>}>
+            <AdditionalInfo coords={coords}/>
+          </Suspense>
+        </div>
       </div>
-      
-      <Suspense fallback={<CurrentSkeleton/>}>
-        <CurrentWeather coords={coords}/>
-      </Suspense>
-      
-      <Suspense fallback={<HourlySkeleton/>}>
-        <HourlyForecast coords={coords}/>
-      </Suspense>
-
-      <Suspense fallback={<DailySkeleton/>}>
-        <DailyForecast coords={coords}/>
-      </Suspense>
-
-      <Suspense fallback={<AdditionalInfoSkeleton/>}>
-        <AdditionalInfo coords={coords}/>
-      </Suspense>
       
     </div>
   )

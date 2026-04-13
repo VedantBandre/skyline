@@ -17,11 +17,12 @@ export default function CurrentWeather ({ coords } : Props) {
 
     return (
         <Card 
-        title="Aktuelles Wetter" 
-        childrenClassName="flex flex-col items-center">
+        title="Aktuelles Wetter"
+        // className="md:pb-11"
+        childrenClassName="flex flex-col items-center 2xl:justify-between">
         
         <div className="flex flex-col items-center">
-            <h2 className="text-4xl font-semibold text-center mb-2">
+            <h2 className="text-4xl font-semibold text-center pt-2">
                 {Math.round(data.current.temp_c)}<span className="inline-block w-1"></span>°C
             </h2>
             <WeatherIcon src={data.current.condition.icon} className="size-30"/>
