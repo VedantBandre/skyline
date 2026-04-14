@@ -12,7 +12,7 @@ export function MapTypeDropdown ({ mapType, setMapType } : Props) {
 
   return (
     <Select value={mapType} onValueChange={(value) => value && setMapType(value)}>
-        <SelectTrigger className="min-w-[180px]">
+        <SelectTrigger className="w-full xs:w-[180px]">
             <SelectValue placeholder="Kartentyp">
                 {currentLabel}
             </SelectValue>
