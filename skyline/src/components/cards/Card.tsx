@@ -4,6 +4,7 @@ import { type ReactNode } from "react";
 type Props = {
     children: ReactNode,
     title: string,
+    className?: string,
     childrenClassName?: string
 }
 
@@ -20,9 +21,10 @@ export default function Card({ children, title, childrenClassName }: Props) {
         flex flex-col gap-3
         transition-all duration-300
         mx-1
+        2xlh-full
         ">
             <h2 className="text-xl font-bold tracking-tight">{title}</h2>
-            <div className={clsx(childrenClassName, 'animate-[fade-in_0.6s_ease-out_forwards] text-gray-200')}>
+            <div className={clsx(childrenClassName, 'animate-[fade-in_0.6s_ease-out_forwards] 2xl:flex-1 text-gray-200')}>
                 {children}
             </div>
         </div>

@@ -18,12 +18,11 @@ export default function Map ({ coords, onMapClick, mapType } : Props) {
     const timestamp = getWeatherApiTimestamp();
     
     return (
-        <div className='rounded-xl'>
+        <div className='rounded-xl h-full'>
             <MapContainer 
             center={[lat, lon]} 
             zoom={6} 
-            style={{width: '100%', height: '250px'}} 
-            // scrollWheelZoom={false}
+            style={{width: '100%', height: '100%'}} 
             >
             <MapClick onMapClick={onMapClick} coords={coords}/>
             

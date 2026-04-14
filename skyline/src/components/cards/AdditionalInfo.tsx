@@ -45,9 +45,9 @@ export default function AdditionalInfo ({ coords } : Props) {
     return (
         <Card 
         title="Additional Info" 
-        childrenClassName="flex flex-col gap-5">
+        childrenClassName="grid grid-cols-1 md:grid-cols-2 gap-2 2xl:gap-1">
             {rows.map(({ label, value, Icon }) => (
-                <div className="flex justify-between items-center-safe" key={value}>
+                <div className="flex justify-between items-center-safe md:py-1 2xl:py-1 2xl:px-2" key={value}>
                     
                     <div className="flex gap-4 items-center-safe">
                         <Icon className="invert size-8"></Icon>

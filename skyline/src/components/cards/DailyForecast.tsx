@@ -27,7 +27,7 @@ export default function DailyForecast({ coords }: Props) {
     });
 
     return (
-        <Card title="Tägliche Vorhersage" childrenClassName="flex flex-col">
+        <Card title="Tägliche Vorhersage" childrenClassName="flex flex-col 2xl:justify-between">
             {data.forecast.forecastday.map(day => (
                 <div key={day.date} className="flex justify-between items-center py-0.25">
                     {/* <p>{day.date}</p> */}
