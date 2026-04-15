@@ -9,7 +9,7 @@ type Props = {
 export function LocationDropdown ({ location, setLocation } : Props) {
   // If the state is 'custom', we want to show 'Custom' (Capitalized)
   // Otherwise, we show the city name
-  const displayValue = location === 'custom' ? 'Custom' : location;
+  const displayValue = location === 'custom' ? 'Benutzerdefiniert' : location;
     
   return (
     <Select value={location} onValueChange={(value) => value && setLocation(value)}>

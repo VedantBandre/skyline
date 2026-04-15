@@ -54,14 +54,14 @@ export default function DailyForecast({ coords }: Props) {
 
           {/* Avg temp */}
           <p className="w-8 text-right font-mono">
-            {Math.round(day.day.avgtemp_c)}°
+            {Math.round(day.day.avgtemp_c)}°C
           </p>
 
           {/* Temperature range graph */}
           <div className="flex items-center gap-2 flex-1 max-w-[240px]">
             {/* Min temp */}
             <span className="w-10 text-right font-mono text-sm text-gray-500">
-              {Math.round(day.day.mintemp_c)}°
+              {Math.round(day.day.mintemp_c)}°C
             </span>
 
             {/* Graph */}
@@ -93,7 +93,7 @@ export default function DailyForecast({ coords }: Props) {
 
             {/* Max temp */}
             <span className="w-10 text-left font-mono text-sm text-gray-500">
-              {Math.round(day.day.maxtemp_c)}°
+              {Math.round(day.day.maxtemp_c)}°C
             </span>
           </div>
         </div>
