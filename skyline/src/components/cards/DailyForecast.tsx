@@ -39,11 +39,11 @@ export default function DailyForecast({ coords }: Props) {
                         {Math.round(day.day.avgtemp_c)}<span className="inline-block w-1"></span>°C
                     </p>
                     
-                    <p className="w-12 text-right font-mono text-gray-300/75">
+                    <p className="w-12 text-right font-mono dark:text-gray-300/75">
                         {Math.round(day.day.mintemp_c)}<span className="inline-block w-1"></span>°C
                     </p>
                     
-                    <p className="w-12 text-right font-mono text-gray-300/75">
+                    <p className="w-12 text-right font-mono dark:text-gray-300/75">
                         {Math.round(day.day.maxtemp_c)}<span className="inline-block w-1"></span>°C
                     </p>
                 </div>

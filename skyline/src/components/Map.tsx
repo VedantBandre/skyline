@@ -79,7 +79,6 @@ const getWeatherApiTimestamp = () => {
 };
 
 
-// TODO: Reduce to using TileLayer
 function MapTileLayer() {
     const map = useMap()
 
