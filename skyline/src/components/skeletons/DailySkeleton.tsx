@@ -8,7 +8,7 @@ export function DailySkeleton ({} : Props) {
     <Card 
         title="Tägliche Vorhersage" 
         childrenClassName="flex flex-col">
-            {Array.from({length: 7}).map((_, index) => (
+            {Array.from({length: 3}).map((_, index) => (
                 <div key={index} className="flex justify-between items-center py-0.25">
                     
                     <Skeleton className="w-9 h-6"/>

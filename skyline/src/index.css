@@ -50,9 +50,9 @@
   color-scheme: light dark;
 
   /* Shadcn Light Theme (OKLCH) */
-  --background: oklch(1 0 0);
+  --background: oklch(.97 0 0);
   --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
+  --card: oklch(.9 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
@@ -112,7 +112,7 @@
     @apply bg-background text-foreground;
   }
 }
-
+/* 
 @layer utilities {
   .no-scrollbar {
     -ms-overflow-style: none;
@@ -125,7 +125,7 @@
   .fade-in {
     animation: fade-in 0.3s ease-in-out forwards;
   }
-}
+} */
 
 /* Fade-in animation for cards & skeletons */
 @keyframes fade-in {

@@ -22,6 +22,7 @@ export default function Card({ children, title, childrenClassName }: Props) {
         transition-all duration-300
         mx-1
         2xlh-full
+        border dark:border-none
         ">
             <h2 className="text-xl font-bold tracking-tight">{title}</h2>
             <div className={clsx(childrenClassName, 'animate-[fade-in_0.6s_ease-out_forwards] 2xl:flex-1 text-gray-600 dark:text-gray-200')}>

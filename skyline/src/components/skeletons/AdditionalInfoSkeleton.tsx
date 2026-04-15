@@ -7,7 +7,7 @@ export function AdditionalInfoSkeleton ({} : Props) {
   return (
     <Card 
         title="Additional Info" 
-        childrenClassName="grid grid-cols-1 md:grid-cols-1 gap-8">
+        childrenClassName="grid grid-cols-1 md:grid-cols-2 gap-8">
             {Array.from({ length : 4 }).map(( _, index) => (
                 <div className="flex justify-between" key={index}>
                     <div className="flex gap-4">

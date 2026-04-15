@@ -45,13 +45,13 @@ export default function AdditionalInfo ({ coords } : Props) {
     return (
         <Card 
         title="Zusatzinfo" 
-        childrenClassName="grid grid-cols-1 md:grid-cols-2 gap-2 2xl:gap-1">
+        childrenClassName="grid grid-cols-1 md:grid-cols-2 gap-2 2xl:gap-1 pb-1">
             {rows.map(({ label, value, Icon }) => (
                 <div className="flex justify-between items-center-safe md:pr-4 md:py-1 2xl:py-1 2xl:px-2" key={value}>
                     
                     <div className="flex gap-4 items-center-safe">
                         <Icon className="dark:invert size-8"></Icon>
-                        <span className="text-gray-300/75 pt-1">{label}</span>
+                        <span className="text-gray-700/75 dark:text-gray-300/75 pt-1">{label}</span>
                     </div>
                     
                     <span className="pt-1">

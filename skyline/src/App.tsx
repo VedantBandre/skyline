@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-// import { getWeather } from "./api";
 import DailyForecast from "./components/cards/DailyForecast";
 import HourlyForecast from "./components/cards/HourlyForecast";
 import CurrentWeather from "./components/cards/CurrentWeather";
@@ -10,7 +9,7 @@ import type { Coords } from "./types";
 import { LocationDropdown } from "./components/dropdowns/LocationDropdown";
 import { getGeoCode } from "./api";
 import { MapTypeDropdown } from "./components/dropdowns/MapTypeDropDown";
-// import MapLegend from "./components/MapLegend";
+import MapLegend from "./components/MapLegend";
 import { CurrentSkeleton } from "./components/skeletons/CurrentSkeleton";
 import { HourlySkeleton } from "./components/skeletons/HourlySkeleton";
 import { DailySkeleton } from "./components/skeletons/DailySkeleton";
@@ -56,23 +55,19 @@ function App() {
   return (
     <div className="flex flex-col gap-2 p-2 w-full 2xl:h-screen 2xl:min-h-[1120px]">
       <div className="w-full p-2">
-        {/* Parent Container: Space-between puts items at the edges */}
         <div className="flex flex-col md:flex-row items-center justify-between w-full gap-4 px-2 py-1">
           
-          {/* 1. Left Section: Skyline (Fixed width or flex-1 to occupy space) */}
           <div className="flex-1 flex justify-start items-start">
             <h1 className="text-2xl font-medium tracking-tight text-gray-900 dark:text-white/90">
               Skyline
             </h1>
           </div>
 
-          {/* 2. Center Section: Dropdowns */}
           <div className="flex flex-row gap-2 sm:gap-4">
             <LocationDropdown location={location} setLocation={setLocation}/>
             <MapTypeDropdown mapType={mapType} setMapType={setMapType}/>
           </div>
 
-          {/* 3. Right Section: Toggle (Flex-1 + justify-end pushes it to the edge) */}
           <div className="flex-1 flex justify-end">
             <LightDarkToggle />
           </div>
@@ -84,7 +79,7 @@ function App() {
       <div className="grid grid-cols-1 2xl:flex-2 2xl:min-h-0 md:grid-cols-7 2xl:grid-cols-7 2xl:grid-rows-7 gap-x-1 gap-y-3">
         <div className="relative h-100 xs:h-80 2xl:h-auto z-0 col-span-1 md:col-span-7 md:row-span-2 2xl:col-span-7 2xl:row-span-3 order-1 xs:gap-8">
           <Map coords={coords} onMapClick={onMapClick} mapType={mapType}/>
-          {/* <MapLegend mapType={mapType}/> */}
+          <MapLegend mapType={mapType}/>
         </div>
         
         <div className="col-span-1 md:col-span-3 2xl:col-span-2 2xl:row-span-3 

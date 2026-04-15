@@ -33,17 +33,17 @@ export default function CurrentWeather ({ coords } : Props) {
 
         <div className="flex justify-between items-center w-full xs:text-sm md:text-sm md:pt-3 p-2 pt-6">
             <div className="flex-1 flex flex-col items-center md:gap-1 gap-2">
-                <p className="text-gray-300/75">Gefühlt wie</p>
+                <p className="text-gray-700/75 dark:text-gray-300/75">Gefühlt wie</p>
                 <p>{Math.round(data.current.feelslike_c)}<span className="inline-block w-1"></span>°C</p>
             </div>
             
             <div className="flex-1 flex flex-col items-center md:gap-1 sgap-2">
-                <p className="text-gray-300/75">Wind</p>
+                <p className="text-gray-700/75 dark:text-gray-300/75">Wind</p>
                 <p>{data.current.wind_kph}<span className="inline-block w-1"></span>km/h</p>
             </div>
             
             <div className="flex-1 flex flex-col items-center md:gap-1 gap-2">
-                <p className="text-gray-300/75">Feuchtigkeit</p>
+                <p className="text-gray-700/75 dark:text-gray-300/75">Feuchtigkeit</p>
                 <p>{data.current.humidity}<span className="inline-block w-1"></span>%</p>
             </div>
         </div>
