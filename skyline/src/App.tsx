@@ -22,6 +22,7 @@ import "leaflet/dist/leaflet.css";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
+import LightDarkToggle from "./components/LightDarkToggle";
 
 L.Icon.Default.mergeOptions({
   iconUrl: markerIcon,
@@ -53,30 +54,35 @@ function App() {
     : coordinates;
 
   return (
-    <div className="dark flex flex-col gap-2 p-2 w-full 2xl:h-screen 2xl:min-h-[1120px]">
-      <div className="flex flex-col items-start md:items-center justify-between px-2 py-1 mt-2 m-1 xs:flex-row xs:gap-4">
-
-        {/* Skyline heading */}
-        <h1 className="text-2xl font-medium tracking-tight text-gray-900 dark:text-white/90">
-          Skyline
-        </h1>
-
-        {/* Dropdown GROUP */}
-        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 md:ml-auto items-stretch sm:items-center w-full sm:w-auto md:flex-row gap-2 md:gap-4">
+    <div className="flex flex-col gap-2 p-2 w-full 2xl:h-screen 2xl:min-h-[1120px]">
+      <div className="w-full p-2">
+        {/* Parent Container: Space-between puts items at the edges */}
+        <div className="flex flex-col md:flex-row items-center justify-between w-full gap-4 px-2 py-1">
           
-          {/* Location dropdown */}
-          <LocationDropdown location={location} setLocation={setLocation}/>
-          
-          {/* Map type dropdown */}
-          <MapTypeDropdown mapType={mapType} setMapType={setMapType}/>
-        
+          {/* 1. Left Section: Skyline (Fixed width or flex-1 to occupy space) */}
+          <div className="flex-1 flex justify-start items-start">
+            <h1 className="text-2xl font-medium tracking-tight text-gray-900 dark:text-white/90">
+              Skyline
+            </h1>
+          </div>
+
+          {/* 2. Center Section: Dropdowns */}
+          <div className="flex flex-row gap-2 sm:gap-4">
+            <LocationDropdown location={location} setLocation={setLocation}/>
+            <MapTypeDropdown mapType={mapType} setMapType={setMapType}/>
+          </div>
+
+          {/* 3. Right Section: Toggle (Flex-1 + justify-end pushes it to the edge) */}
+          <div className="flex-1 flex justify-end">
+            <LightDarkToggle />
+          </div>
+
         </div>
-
       </div>
       
 
       <div className="grid grid-cols-1 2xl:flex-2 2xl:min-h-0 md:grid-cols-7 2xl:grid-cols-7 2xl:grid-rows-7 gap-x-1 gap-y-3">
-        <div className="relative h-100 2xl:h-auto z-0 col-span-1 md:col-span-7 md:row-span-2 2xl:col-span-7 2xl:row-span-3 order-1">
+        <div className="relative h-100 xs:h-80 2xl:h-auto z-0 col-span-1 md:col-span-7 md:row-span-2 2xl:col-span-7 2xl:row-span-3 order-1 xs:gap-8">
           <Map coords={coords} onMapClick={onMapClick} mapType={mapType}/>
           {/* <MapLegend mapType={mapType}/> */}
         </div>

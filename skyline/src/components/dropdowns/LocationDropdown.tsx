@@ -13,7 +13,7 @@ export function LocationDropdown ({ location, setLocation } : Props) {
     
   return (
     <Select value={location} onValueChange={(value) => value && setLocation(value)}>
-      <SelectTrigger className="min-w-[120px]">
+      <SelectTrigger className="w-full xs:w-[180px]">
             <SelectValue>
                 {displayValue}
             </SelectValue>

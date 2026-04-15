@@ -21,7 +21,7 @@ export default function CurrentWeather ({ coords } : Props) {
         // className="md:pb-11"
         childrenClassName="flex flex-col items-center 2xl:justify-between">
         
-        <div className="flex flex-col items-center pb-2 md:pb-4 pt-4">
+        <div className="flex flex-col items-center pb-2 md:pb-4.5 pt-4">
             <h2 className="text-4xl font-semibold text-center pt-2">
                 {Math.round(data.current.temp_c)}<span className="inline-block w-1"></span>°C
             </h2>
